@@ -3,58 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Cost Analysis</title>
+    <title>Generator Cost Analysis with LPG</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Generator Cost Analysis</h1>
-        <form id="costForm">
-            <label for="rating">Diesel Generator Rating (kVA):</label>
-            <input type="number" id="rating" name="rating" required>
+        <div id="loginForm" class="login-form">
+            <h1>Login</h1>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="button" onclick="login()">Login</button>
+        </div>
 
-            <label for="hours">Number of Hours the Generator will Run:</label>
-            <input type="number" id="hours" name="hours" required>
+        <div id="appForm" class="app-form" style="display: none;">
+            <div style="display: flex; justify-content: center;">
+                <img src="greengaslogo2.jpg" alt="logo">
+            </div>
+            <h1>GreenGas (LPG) Energy Cost Analyzer App (LPG+Diesel)</h1>
+            <form id="costForm">
+                <label for="rating">Diesel Generator Rating (kVA):</label>
+                <input type="number" id="rating" name="rating" required>
 
-            <label for="dieselPrice">Diesel Price per Liter (NGN):</label>
-            <input type="number" id="dieselPrice" name="dieselPrice" required>
+                <label for="hours">Number of Hours the Generator will Run:</label>
+                <input type="number" id="hours" name="hours" required>
 
-            <label for="lpgPrice">LPG Price per Kilogram (NGN):</label>
-            <input type="number" id="lpgPrice" name="lpgPrice" required>
+                <label for="dieselPrice">Diesel Price per Liter (NGN):</label>
+                <input type="number" id="dieselPrice" name="dieselPrice" value="1200" required>
 
-            <label for="consumption">Hourly Consumption (liters, optional):</label>
-            <input type="number" id="consumption" name="consumption">
+                <label for="lpgPrice">LPG Price per kg (NGN):</label>
+                <input type="number" id="lpgPrice" name="lpgPrice" value="400" required>
 
-            <label for="lpgPercentage">Amount of LPG in Mixture (%):</label>
-            <input type="number" id="lpgPercentage" name="lpgPercentage" required>
+                <label for="consumption">Hourly Consumption (liters, optional):</label>
+                <input type="number" id="consumption" name="consumption">
 
-            <label for="dieselPercentage">Amount of Diesel in Mixture (%):</label>
-            <input type="number" id="dieselPercentage" name="dieselPercentage" required>
+                <label for="lpgPercentage">Amount of LPG in Mixture (%):</label>
+                <input type="number" id="lpgPercentage" name="lpgPercentage" required>
 
-            <label for="installationCost">Cost of Installation of Kit for the Conversion (NGN):</label>
-            <input type="number" id="installationCost" name="installationCost" required>
+                <label for="dieselPercentage">Amount of Diesel in Mixture (%):</label>
+                <input type="number" id="dieselPercentage" name="dieselPercentage" required>
 
-            <button type="button" onclick="calculateCosts()">Submit</button>
-            <button type="button" onclick="resetForm()">Reset</button>
-        </form>
+                <label for="installationCost">Cost of Installation of Kit for the Conversion (NGN):</label>
+                <input type="number" id="installationCost" name="installationCost" required>
 
-        <div id="results" class="results">
-            <h2>Results</h2>
-            <p id="dieselHourlyCost"></p>
-            <p id="dieselDailyCost"></p>
-            <p id="dieselWeeklyCost"></p>
-            <p id="dieselMonthlyCost"></p>
-            <p id="dualFuelHourlyCost"></p>
-            <p id="dualFuelDailyCost"></p>
-            <p id="dualFuelWeeklyCost"></p>
-            <p id="dualFuelMonthlyCost"></p>
-            <p id="dualFuelHourlySavings"></p>
-            <p id="dualFuelDailySavings"></p>
-            <p id="dualFuelWeeklySavings"></p>
-            <p id="dualFuelMonthlySavings"></p>
-            <p id="breakevenTime"></p>
-            <p id="breakevenTimeWeeks"></p>
-            <p id="breakevenTimeMonths"></p>
+                <button type="button" onclick="calculateCosts()">Submit</button>
+                <button type="button" onclick="resetForm()">Reset</button>
+            </form>
+
+            <div id="results" class="results">
+                <h2>Results</h2>
+                <div class="result-item">
+                    <p id="dieselHourlyCost"></p>
+                    <p id="dualFuelHourlyCost"></p>
+                    <p id="dualFuelHourlySavings"></p>
+                </div>
+                <div class="result-item">
+                    <p id="dieselDailyCost"></p>
+                    <p id="dualFuelDailyCost"></p>
+                    <p id="dualFuelDailySavings"></p>
+                </div>
+                <div class="result-item">
+                    <p id="dieselWeeklyCost"></p>
+                    <p id="dualFuelWeeklyCost"></p>
+                    <p id="dualFuelWeeklySavings"></p>
+                </div>
+                <div class="result-item">
+                    <p id="dieselMonthlyCost"></p>
+                    <p id="dualFuelMonthlyCost"></p>
+                    <p id="dualFuelMonthlySavings"></p>
+                </div>
+                <div class="result-item">
+                    <p id="breakevenTime"></p>
+                    <p id="breakevenTimeWeeks"></p>
+                    <p id="breakevenTimeMonths"></p>
+                </div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
