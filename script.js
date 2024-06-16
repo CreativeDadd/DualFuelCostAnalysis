@@ -38,15 +38,33 @@ function calculateCosts() {
     // Breakeven time
     const breakevenTimeHours = installationCost / hourlySavings;
     const breakevenTimeDays = breakevenTimeHours / hours;
+    const breakevenTimeWeeks = breakevenTimeDays / 7;
+    const breakevenTimeMonths = breakevenTimeDays / 30;
+
+    // Format numbers with commas
+    const formatNumber = (num) => {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     // Display results
-    document.getElementById('dieselHourlyCost').innerText = `Cost of using 100% Diesel hourly: ${dieselHourlyCost.toFixed(2)} NGN`;
-    document.getElementById('dieselDailyCost').innerText = `Cost of using 100% Diesel daily: ${dieselDailyCost.toFixed(2)} NGN`;
-    document.getElementById('dieselWeeklyCost').innerText = `Cost of using 100% Diesel weekly: ${dieselWeeklyCost.toFixed(2)} NGN`;
-    document.getElementById('dieselMonthlyCost').innerText = `Cost of using 100% Diesel monthly: ${dieselMonthlyCost.toFixed(2)} NGN`;
-    document.getElementById('dualFuelHourlySavings').innerText = `Savings on Diesel by using dual fuel hourly: ${hourlySavings.toFixed(2)} NGN`;
-    document.getElementById('dualFuelDailySavings').innerText = `Savings on Diesel by using dual fuel daily: ${dailySavings.toFixed(2)} NGN`;
-    document.getElementById('dualFuelWeeklySavings').innerText = `Savings on Diesel by using dual fuel weekly: ${weeklySavings.toFixed(2)} NGN`;
-    document.getElementById('dualFuelMonthlySavings').innerText = `Savings on Diesel by using dual fuel monthly: ${monthlySavings.toFixed(2)} NGN`;
-    document.getElementById('breakevenTime').innerText = `Breakeven time: ${breakevenTimeDays.toFixed(2)} days`;
+    document.getElementById('dieselHourlyCost').innerText = `Cost of using 100% Diesel hourly: ${formatNumber(dieselHourlyCost.toFixed(2))} NGN`;
+    document.getElementById('dieselDailyCost').innerText = `Cost of using 100% Diesel daily: ${formatNumber(dieselDailyCost.toFixed(2))} NGN`;
+    document.getElementById('dieselWeeklyCost').innerText = `Cost of using 100% Diesel weekly: ${formatNumber(dieselWeeklyCost.toFixed(2))} NGN`;
+    document.getElementById('dieselMonthlyCost').innerText = `Cost of using 100% Diesel monthly: ${formatNumber(dieselMonthlyCost.toFixed(2))} NGN`;
+    document.getElementById('dualFuelHourlyCost').innerText = `Cost of using LPG-Diesel Mixture hourly: ${formatNumber(dualFuelHourlyCost.toFixed(2))} NGN`;
+    document.getElementById('dualFuelDailyCost').innerText = `Cost of using LPG-Diesel Mixture daily: ${formatNumber(dualFuelDailyCost.toFixed(2))} NGN`;
+    document.getElementById('dualFuelWeeklyCost').innerText = `Cost of using LPG-Diesel Mixture weekly: ${formatNumber(dualFuelWeeklyCost.toFixed(2))} NGN`;
+    document.getElementById('dualFuelMonthlyCost').innerText = `Cost of using LPG-Diesel Mixture monthly: ${formatNumber(dualFuelMonthlyCost.toFixed(2))} NGN`;
+    document.getElementById('dualFuelHourlySavings').innerText = `Savings on Diesel by using dual fuel hourly: ${formatNumber(hourlySavings.toFixed(2))} NGN`;
+    document.getElementById('dualFuelDailySavings').innerText = `Savings on Diesel by using dual fuel daily: ${formatNumber(dailySavings.toFixed(2))} NGN`;
+    document.getElementById('dualFuelWeeklySavings').innerText = `Savings on Diesel by using dual fuel weekly: ${formatNumber(weeklySavings.toFixed(2))} NGN`;
+    document.getElementById('dualFuelMonthlySavings').innerText = `Savings on Diesel by using dual fuel monthly: ${formatNumber(monthlySavings.toFixed(2))} NGN`;
+    document.getElementById('breakevenTime').innerText = `Breakeven time: ${formatNumber(breakevenTimeDays.toFixed(2))} days`;
+    document.getElementById('breakevenTimeWeeks').innerText = `Breakeven time: ${formatNumber(breakevenTimeWeeks.toFixed(2))} weeks`;
+    document.getElementById('breakevenTimeMonths').innerText = `Breakeven time: ${formatNumber(breakevenTimeMonths.toFixed(2))} months`;
+}
+
+function resetForm() {
+    document.getElementById('costForm').reset();
+    document.getElementById('results').querySelectorAll('p').forEach(p => p.innerText = '');
 }

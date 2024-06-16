@@ -32,17 +32,26 @@ form input {
 }
 
 button {
-    width: 100%;
+    width: 48%;
     padding: 10px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 2%;
 }
 
 button:hover {
     background-color: #218838;
+}
+
+button:last-child {
+    background-color: #dc3545;
+}
+
+button:last-child:hover {
+    background-color: #c82333;
 }
 
 .results {
